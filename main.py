@@ -1,10 +1,10 @@
 import discord
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
 import asyncio
-from keep_alive import keep_alive
+from keep_alive import keep_alive  # << สำคัญ
 import os
 
-TOKEN = os.getenv('DISCORD_TOKEN')  # ซ่อนไม่ให้ใส่ token ตรงๆ
+TOKEN = os.getenv('DISCORD_TOKEN')
 CHANNEL_ID = '1228571438701875202'
 
 intents = discord.Intents.default()
@@ -24,5 +24,5 @@ async def on_ready():
     print(f'Logged in as {client.user}')
     scheduler.start()
 
-keep_alive()  # สำคัญ! เพื่อให้ Render มีหน้าเว็บไว้สำหรับ UptimeRobot ping
+keep_alive()  # << ต้องมีบรรทัดนี้ก่อน client.run
 client.run(TOKEN)
