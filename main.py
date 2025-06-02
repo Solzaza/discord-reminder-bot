@@ -14,13 +14,13 @@ client = discord.Client(intents=intents)
 async def send_reminder():
     print("Sending reminder...")
     try:
-    channel = client.get_channel(int(CHANNEL_ID))
-    if channel:
-        await channel.send('อย่าลืม! เช็คอิน Cardekho')
-    else:
-    print("❗ไม่เจอช่อง Discord!")
+        channel = client.get_channel(int(CHANNEL_ID))
+        if channel:
+            await channel.send('อย่าลืม! เช็คอิน Cardekho')
+        else:
+            print("❗ไม่เจอช่อง Discord!")
     except Exception as e:
-    print(f"❌ Error while sending reminder: {e}")
+        print(f"❌ Error while sending reminder: {e}")
 
 scheduler = AsyncIOScheduler()
 scheduler.add_job(send_reminder, 'cron', day_of_week='mon-fri', hour=2, minute=0)
